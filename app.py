@@ -11,14 +11,14 @@ from flask import Flask, redirect, url_for, request, Response, jsonify, redirect
 from werkzeug.utils import secure_filename
 from gevent.pywsgi import WSGIServer
 import numpy as np
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
-from tensorflow.keras.layers import Convolution2D, MaxPooling2D
-from tensorflow.keras.optimizers import SGD
-from tensorflow.keras.callbacks import ModelCheckpoint
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers import Convolution2D, MaxPooling2D
+from keras.optimizers import SGD
+from keras.callbacks import ModelCheckpoint
 from sklearn.metrics import matthews_corrcoef
 from sklearn.metrics import hamming_loss
-from tensorflow.keras import backend as K
+from keras import backend as K
 from PIL import Image
 import joblib
 K.set_image_data_format('channels_first')
@@ -75,5 +75,5 @@ def predict_ld():
     return None
 
 if __name__ == '__main__':
-    http_server = WSGIServer(('0.0.0.0'), app)
+    http_server = WSGIServer(('0.0.0.0',5000), app)
     http_server.serve_forever()        

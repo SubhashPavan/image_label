@@ -1,20 +1,8 @@
-FROM python:3.6
-
-MAINTAINER SubhashPavan "pavansubhash@gmail.com"
-
-RUN apt-get update -y
-
-RUN apt-get install -y python3-pip
-RUN apt-get install -y libsm6 libxext6 libxrender-dev
-
-COPY ./requirements.txt /app/requirements.txt
-
-WORKDIR /app
-
-RUN pip install --no-cache-dir -r requirements.txt
-
+FROM python:3.7
+LABEL maintainer="pavansubhash@gmail.com"
 COPY . /app
-
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py" ]
+WORKDIR /app
+RUN pip install -r requirements.txt
+EXPOSE 5000
+ENTRYPOINT ["python"]
+CMD ["app.py"]
