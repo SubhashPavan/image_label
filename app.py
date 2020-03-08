@@ -11,7 +11,7 @@ from flask import Flask, redirect, url_for, request, Response, jsonify, redirect
 from werkzeug.utils import secure_filename
 from gevent.pywsgi import WSGIServer
 import numpy as np
-from keras.models import Sequential
+from tensorflow.keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
 from keras.optimizers import SGD
